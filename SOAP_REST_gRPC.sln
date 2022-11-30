@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryService", "LibraryService\LibraryService.csproj", "{5544D932-A1B6-49C1-AC17-E44C57CB8A1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryService.MVC", "LibraryService.MVC\LibraryService.MVC.csproj", "{39BD1B1C-B7D8-46FF-81D4-9BF9AE1777E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryService.MVC", "LibraryService.MVC\LibraryService.MVC.csproj", "{39BD1B1C-B7D8-46FF-81D4-9BF9AE1777E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LibraryServiceProject", "LibraryServiceProject", "{FA9EBD03-C3DD-44D3-AEBA-85A59B49B5C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5544D932-A1B6-49C1-AC17-E44C57CB8A1B} = {FA9EBD03-C3DD-44D3-AEBA-85A59B49B5C2}
+		{39BD1B1C-B7D8-46FF-81D4-9BF9AE1777E8} = {FA9EBD03-C3DD-44D3-AEBA-85A59B49B5C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {706343C3-C39D-4990-B92B-A1CE68196EED}
