@@ -1,0 +1,18 @@
+﻿namespace Sample2
+{
+	public class Program
+	{
+		public bool Main()
+		{
+			return Process();
+		}
+
+		private bool Process() 
+		{
+			System.DateTime now = System.DateTime.Now;
+			System.DateTime target = now.Date.AddHours(16);
+			
+			return now > target;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿namespace Sample1
+{
+	public class Program
+	{
+		public bool EntryPoint()
+		{
+			System.Random random = new System.Random();
+			int number = random.Next(0, 2);
+			return number == 0 ? true : false;
+		}
+	}
+}
