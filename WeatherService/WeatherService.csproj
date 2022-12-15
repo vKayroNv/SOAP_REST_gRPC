@@ -7,16 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Proto\auth.proto" />
     <None Remove="Proto\weather.proto" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.50.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WeatherService.Storage\WeatherService.Storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Proto\auth.proto" GrpcServices="Server" />
     <Protobuf Include="Proto\weather.proto" GrpcServices="Server" />
   </ItemGroup>
 
