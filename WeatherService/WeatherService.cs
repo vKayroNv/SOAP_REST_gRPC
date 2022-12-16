@@ -1,10 +1,12 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using WeatherServiceProtos;
 using static WeatherServiceProtos.WeatherService;
 
 namespace WeatherService
 {
+    [Authorize]
     public class WeatherService : WeatherServiceBase
     {
         private const int __waitSec = 1;

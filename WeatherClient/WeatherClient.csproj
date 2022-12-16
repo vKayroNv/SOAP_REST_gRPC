@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="..\WeatherService\Proto\auth.proto">
+      <Link>Proto\auth.proto</Link>
+    </Protobuf>
     <Protobuf Include="..\WeatherService\Proto\weather.proto" Link="Proto\weather.proto" GrpcServices="Client" />
   </ItemGroup>
 

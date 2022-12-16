@@ -1,5 +1,7 @@
-﻿using Grpc.Net.Client;
+﻿using Grpc.Core;
+using Grpc.Net.Client;
 using WeatherServiceProtos;
+using static WeatherServiceProtos.AuthService;
 using static WeatherServiceProtos.WeatherService;
 
 namespace WeatherClient
@@ -12,25 +14,35 @@ namespace WeatherClient
                 "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
             var channel = GrpcChannel.ForAddress("http://localhost:5001");
-            WeatherServiceClient client = new(channel);
+            AuthServiceClient authClient = new(channel);
 
             Thread.Sleep(5000);
 
+            var registerRequest = new RegisterRequest()
+            {
+                Username = "username",
+                Password = "password",
+            };
+            var response = authClient.Register(registerRequest);
+
+            if (response.ErrorCode != 0)
+            {
+                Console.WriteLine($"Error Code: {response.ErrorCode}");
+                Console.WriteLine($"Message: {response.ErrorMessage}");
+                return;
+            }
+
+            var headers = new Metadata
+            {
+                { "Authorization", $"Bearer {response.Token}" }
+            };
+
+            WeatherServiceClient weatherClient = new(channel);
             var request = new GetWeatherRequest()
             {
                 CityId = 2
             };
-            ProcessResponse(request, client.GetWeather(request));
-            Console.WriteLine();
-
-            request.CityId = 10;
-            ProcessResponse(request, client.GetWeather(request));
-            Console.WriteLine();
-
-            Console.ReadKey(true);
-
-            request.CityId = 1;
-            var streamResponse = client.GetWeatherStream(request);
+            var streamResponse = weatherClient.GetWeatherStream(request, headers);
             
             while (true)
             {
